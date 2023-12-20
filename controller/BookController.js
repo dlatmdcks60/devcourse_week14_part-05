@@ -100,7 +100,9 @@ const bookDetail = (req,res) => {
                 let result = results[0];
                 if(result){
                     result.pubDate = result.pub_date;
+                    result.categoryName = result.category_name;
                     delete result.pub_date;
+                    delete result.category_name;
                     return res.status(StatusCodes.OK).json(result);
                 }
                 else
@@ -124,8 +126,14 @@ const bookDetail = (req,res) => {
                     return res.status(StatusCodes.BAD_REQUEST).end();
                 }
 
-                if(results[0])
-                    return res.status(StatusCodes.OK).json(results[0]);
+                let result = results[0];
+                if(result){
+                    result.pubDate = result.pub_date;
+                    result.categoryName = result.category_name;
+                    delete result.pub_date;
+                    delete result.category_name;
+                    return res.status(StatusCodes.OK).json(result);
+                }
                 else
                     return res.status(StatusCodes.NOT_FOUND).end();
         })
